@@ -2,7 +2,7 @@
 session_start();
 
 include '../../Controller/Test.php';
-$_SESSION["mensaje_error"] = "";
+unset($_SESSION["mensaje_error"]);
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(isset($_POST["id_test"]) && isset($_POST["id_person"])){
@@ -15,9 +15,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $_SESSION["mensaje_error"] = "";
             exit();
         }
+    } else {
+        echo'<script> window.location.href = "AsignarExamenes.php"; </script>';
+        $_SESSION["mensaje_error"] = "Error al asignar un examen";
     }
-    echo'<script> window.location.href = "AsignarExamenes.php"; </script>';
-    $_SESSION["mensaje_error"] = "Error al asignar un examen";
 }
 
 ?>
