@@ -12,7 +12,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         if(TestController::GuardarExamenAsignado($id_test_person, $id_test, $id_person)){
             echo'<script> window.location.href = "AsignarExamenes.php"; </script>';
-            $_SESSION["mensaje_error"] = "";
+            unset($_SESSION["mensaje_error"]);
             exit();
         }
     } else {
